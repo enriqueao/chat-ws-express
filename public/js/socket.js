@@ -62,3 +62,16 @@ document.getElementById("btnEnviar").addEventListener("click", ()=>{
 socket.on("mensajeNuevo", (res) => {
     showMensaje(res.usuario, res.msg);
 });
+
+document.getElementById("mensaje").addEventListener("input", () => {
+    socket.emit("escribiendo", {
+        usuario: localStorage.nombreChat
+    });
+});
+
+socket.on("escribiendo", (data) => {
+    document.getElementById("escribiendo").innerHTML = `${data.usuario} esta escribiendo...`;
+    setTimeout(() => {
+        document.getElementById("escribiendo").innerHTML = "";
+    }, 2000);
+});

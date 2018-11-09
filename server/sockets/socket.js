@@ -35,4 +35,9 @@ io.on("connection", (client) => {
             usuario: req.usuario,
         });
     });
+
+    client.on("escribiendo", (usuario) => {
+        usuario = usuario.usuario;
+        client.broadcast.emit("escribiendo", { usuario });
+    });
 }); 
