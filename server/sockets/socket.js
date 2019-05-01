@@ -11,6 +11,10 @@ io.on("connection", (client) => {
     });
 
     client.on("disconnect", () => {
+        client.broadcast.emit("sedesconecto", {
+            usuario: "",
+            msg: "Un usuario se ha desconectado"
+        });
         console.log("se desconecto :(");
     });
 

@@ -75,3 +75,8 @@ socket.on("escribiendo", (data) => {
         document.getElementById("escribiendo").innerHTML = "";
     }, 2000);
 });
+
+
+socket.on("sedesconecto", function(res){
+    showMensaje(res.usuario, res.msg);
+});
